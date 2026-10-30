@@ -1,4 +1,5 @@
 from datetime import datetime
+from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field
 
 class WorkspaceCreate(BaseModel):
@@ -9,6 +10,6 @@ class WorkspaceUpdate(BaseModel):
 
 class WorkspaceResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
-    id: str
+    id: UUID
     name: str
     created_at: datetime
