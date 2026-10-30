@@ -16,7 +16,9 @@ SessionDep = Annotated[AsyncSession, Depends(get_db_session)]
 CurrentUser = Annotated[User, Depends(get_current_user)]
 
 @router.post("", response_model=WorkspaceResponse, status_code=status.HTTP_201_CREATED)
-async def create_workspace(payload: WorkspaceCreate, session: SessionDep, current_user: CurrentUser):
+async def create_workspace(
+    payload: WorkspaceCreate, session: SessionDep, current_user: CurrentUser
+):
     name = payload.name.strip()
     if not name:
         raise HTTPException(status_code=422, detail="Workspace name cannot be blank")
