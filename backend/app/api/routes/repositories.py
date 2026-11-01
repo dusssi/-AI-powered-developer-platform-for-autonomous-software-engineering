@@ -37,7 +37,10 @@ def normalize_github_url(value: str) -> tuple[str, str]:
         or parsed.query
         or parsed.fragment
     ):
-        raise HTTPException(status_code=422, detail="Only HTTPS github.com repository URLs are supported")
+        raise HTTPException(
+            status_code=422,
+            detail="Only HTTPS github.com repository URLs are supported",
+        )
 
     parts = [part for part in parsed.path.strip("/").split("/") if part]
     if len(parts) != 2:
