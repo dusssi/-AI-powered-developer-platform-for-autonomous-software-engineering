@@ -42,6 +42,7 @@ def test_reject_non_github_or_unsafe_repository_urls(client):
         "http://github.com/octocat/Hello-World",
         "https://github.com.evil.example/octocat/Hello-World",
         "https://user:password@github.com/octocat/Hello-World",
+        "https://github.com:invalid/octocat/Hello-World",
         "https://github.com/octocat/Hello-World?redirect=https://evil.example",
     ):
         response = client.post(
