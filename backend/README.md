@@ -30,5 +30,10 @@ uvicorn app.main:app --reload
 - GET /api/v1/workspaces/{workspace_id}
 - PATCH /api/v1/workspaces/{workspace_id}
 - DELETE /api/v1/workspaces/{workspace_id}
+- POST /api/v1/workspaces/{workspace_id}/repositories
+- GET /api/v1/workspaces/{workspace_id}/repositories
+- DELETE /api/v1/workspaces/{workspace_id}/repositories/{repository_id}
 
-Passwords use Argon2 hashes. Access tokens are short-lived JWTs. Workspace access is owner-scoped. Refresh/revocation, email verification, password reset, rate limiting, and account recovery are not implemented. This is an early development foundation, not production-ready identity/tenancy.
+Repository registration currently accepts HTTPS GitHub repository URLs and records metadata only. It does not clone, fetch, or execute repository content. The connection status remains `pending_connection` until a GitHub App/OAuth authorization flow is implemented.
+
+Passwords use Argon2 hashes. Access tokens are short-lived JWTs. Workspace and repository access is owner-scoped. Refresh/revocation, email verification, password reset, rate limiting, and account recovery are not implemented. This is an early development foundation, not production-ready identity/tenancy.
