@@ -24,12 +24,16 @@ _REPO_PART = re.compile(r"^[A-Za-z0-9_.-]+$")
 def normalize_github_url(value: str) -> tuple[str, str]:
     """Accept only canonical HTTPS GitHub repository URLs; never fetch the URL here."""
     parsed = urlsplit(value.strip())
+    try:
+        port = parsed.port
+    except ValueError:
+        raise HTTPException(status_code=422, detail="Repository URL has an invalid port") from None
     if (
         parsed.scheme != "https"
         or parsed.hostname != "github.com"
         or parsed.username is not None
         or parsed.password is not None
-        or parsed.port not in (None, 443)
+        or port not in (None, 443)
         or parsed.query
         or parsed.fragment
     ):
@@ -74,12 +78,15 @@ async def register_repository(
 ):
     await get_owned_workspace(workspace_id, session, current_user)
     full_name, clone_url = normalize_github_url(payload.url)
+    default_branch = payload.default_branch.strip() if payload.default_branch else None
+    if payload.default_branch is not None and not default_branch:
+        raise HTTPException(status_code=422, detail="Default branch cannot be blank")
     repository = Repository(
         workspace_id=workspace_id,
         provider="github",
         full_name=full_name,
         clone_url=clone_url,
-        default_branch=payload.default_branch.strip() if payload.default_branch else None,
+        default_branch=default_branch,
         connection_status="pending_connection",
     )
     session.add(repository)
