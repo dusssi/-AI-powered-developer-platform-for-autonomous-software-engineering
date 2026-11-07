@@ -13,22 +13,50 @@
 Exit criteria: docs reviewed, security invariants accepted, implementation boundaries stable.
 
 ## Stage 1 — Workspace foundation
-Workspace model/API; authorized repository import; file browser/metadata; indexing/search; authentication and workspace authorization.
+- [x] Workspace persistence and CRUD APIs.
+- [x] User registration/login baseline and owner-scoped workspace authorization.
+- [x] Repository URL registration (metadata only).
+- [ ] Add proper Git provider authorization and repository metadata fetch.
+- [ ] Implement task-scoped repository snapshot/indexing service.
+- [x] Persist task, attempt, event, and approval-request records with migration 0003.
+- [x] Add owner-scoped task create/list/detail APIs; task creation creates attempt 1 in queued state.
+- [ ] Add frontend workspace/repository experience.
 
-## Stage 2 — Agent runtime
-Task state machine; model gateway; planner; tool registry/validation; streaming, cancellation, retries, audit events.
+## Stage 2 — Platform-owned agent contracts
+- [x] Add initial task context, normalized event, and adapter capability schemas.
+- [x] Add SQL persistence models for tasks, attempts, events, and approval records.
+- [ ] Implement validated persisted task state machine and guarded transitions.
+- [x] Implement adapter protocol and deterministic fake adapter.
+- [x] Define normalized event envelope, correlation IDs, and durable event table (event ingestion/stream transport remain pending).
+- [ ] Add task history, cancellation, retry, and timeout semantics.
 
 ## Stage 3 — Safe execution
-Permission/approval engine; worker lifecycle; filesystem confinement; process/resource quotas; network egress controls; security regression suite.
+- [ ] Add policy engine with deny-overrides-allow semantics.
+- [x] Add approval-request persistence fields (decision API, expiry enforcement, scope checks, and replay protection remain pending).
+- [ ] Implement disposable isolated workers with no ambient platform secrets.
+- [ ] Enforce filesystem confinement, resource quotas, and default-deny network egress.
+- [ ] Add security regression suite for tenancy, path traversal, approvals, and worker escape boundaries.
 
-## Stage 4 — Editing and verification
-Read/search/edit tools; diff review; test/build execution; result verification and task reports.
+## Stage 4 — First coding-engine integration
+- [ ] Implement OpenCode adapter behind the platform adapter contract.
+- [ ] Prove read-only mode and tool-gateway mediation.
+- [ ] Add independent test/build verification and diff artifacts.
+- [ ] Evaluate Codex adapter after the same contract and policy tests pass.
+- [ ] Add Gemini CLI and Aider adapter profiles.
 
-## Stage 5 — Integrations
-GitHub branches/PRs; code review; governed MCP adapters.
+## Stage 5 — Verification and delivery
+- [ ] File edit/diff review and artifact viewer.
+- [ ] Test/build command profiles with bounded execution.
+- [ ] Git branch/PR workflow with explicit human approval.
+- [ ] Auditable task report with commands, exit codes, logs, and verification evidence.
 
-## Stage 6 — Multi-agent and teams
-Specialist agents; isolated worktrees/workspaces; team roles and shared policy.
+## Stage 6 — Advanced runtimes
+- [ ] Evaluate OpenHands as an isolated worker backend.
+- [ ] Add isolated multi-agent decomposition and coordination.
+- [ ] Add governed MCP integrations.
+- [ ] Evaluate desktop/computer-use as a separate explicitly opted-in capability.
 
 ## Stage 7 — Managed cloud workflows
-Managed development environments; deployment integrations; organization controls and observability.
+- [ ] Managed development environments.
+- [ ] Deployment integrations with explicit approvals.
+- [ ] Organization controls, policy management, and observability.
