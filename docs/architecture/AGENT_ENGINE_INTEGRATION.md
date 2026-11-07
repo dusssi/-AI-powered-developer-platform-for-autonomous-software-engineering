@@ -111,3 +111,8 @@ Before wiring an engine, establish the platform-owned interfaces and tests:
 - Security tests for unauthorized workspace access, approval scope/replay, path traversal, cancellation and terminal-state integrity.
 
 This gives every engine one stable contract and keeps the security model consistent.
+
+
+## Complete fork coverage
+
+The engine candidates listed above are only one part of the source ecosystem. Every confirmed fork has an assigned role in the [Complete Fork Integration Matrix](ALL_FORKS_INTEGRATION_MATRIX.md), including harness/skills, context connectors, integration catalog, desktop and media capabilities, prompt/security evaluation, benchmarks, and developer enablement. Do not treat the coding-engine shortlist as the complete fork inventory.
