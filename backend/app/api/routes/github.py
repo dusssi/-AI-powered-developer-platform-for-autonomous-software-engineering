@@ -77,7 +77,7 @@ async def complete_github_installation(
         select(GitHubInstallState).where(GitHubInstallState.state_hash == state_hash)
     )
     now = datetime.now(UTC)
-    if pending is None or pending.used_at is not None or pending.expires_at <= now:
+    expires_at = pending.expires_at if pending and pending.expires_at.tzinfo else (pending.expires_at.replace(tzinfo=UTC) if pending else now)\n    if pending is None or pending.used_at is not None or expires_at <= now:
         raise HTTPException(status_code=400, detail="Invalid or expired installation state")
     existing = await session.scalar(
         select(GitHubInstallation).where(
