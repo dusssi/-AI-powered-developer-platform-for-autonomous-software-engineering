@@ -44,7 +44,7 @@ async def start_github_installation(
 ):
     await owned_workspace(workspace_id, session, current_user)
     settings = get_settings()
-    if not settings.github_app_slug or not settings.github_setup_url:
+    if not settings.github_app_slug:
         raise HTTPException(status_code=503, detail="GitHub App integration is not configured")
     raw_state = secrets.token_urlsafe(32)
     state_hash = hashlib.sha256(raw_state.encode()).hexdigest()
