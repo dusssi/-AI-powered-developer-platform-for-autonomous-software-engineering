@@ -34,6 +34,6 @@ uvicorn app.main:app --reload
 - GET /api/v1/workspaces/{workspace_id}/repositories
 - DELETE /api/v1/workspaces/{workspace_id}/repositories/{repository_id}
 
-Repository registration currently accepts HTTPS GitHub repository URLs and records metadata only. It does not clone, fetch, or execute repository content. The connection status remains `pending_connection` until a GitHub App/OAuth authorization flow is implemented.
+Repository registration accepts HTTPS GitHub repository URLs and records metadata only. The GitHub App installation handshake is available when `GITHUB_APP_SLUG` and `GITHUB_WEBHOOK_SECRET` are configured. Set the GitHub App Setup URL to `/api/v1/github/setup/callback` and its webhook URL to `/api/v1/github/webhook`; subscribe to the `installation` event. The callback uses a one-time, expiring state value. Webhooks are authenticated with HMAC-SHA256. This records installation metadata only: it does not yet mint installation access tokens, enumerate repositories, clone code, or index source files.
 
 Passwords use Argon2 hashes. Access tokens are short-lived JWTs. Workspace and repository access is owner-scoped. Refresh/revocation, email verification, password reset, rate limiting, and account recovery are not implemented. This is an early development foundation, not production-ready identity/tenancy.
