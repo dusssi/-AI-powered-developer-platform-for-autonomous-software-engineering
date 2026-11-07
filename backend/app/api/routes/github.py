@@ -65,10 +65,10 @@ async def start_github_installation(
 
 @router.get("/github/setup/callback", response_model=GitHubInstallationResponse)
 async def complete_github_installation(
+    session: SessionDep,
     installation_id: int = Query(gt=0),
     state: str = Query(min_length=32, max_length=200),
     setup_action: str = Query(default="install"),
-    session: SessionDep = None,
 ):
     if setup_action not in {"install", "update"}:
         raise HTTPException(status_code=400, detail="Unsupported GitHub setup action")
