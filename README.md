@@ -18,7 +18,7 @@ This repository is an early development foundation. It currently contains a Fast
 - **Isolated workers:** run repository commands in disposable task-scoped environments, never in the API process.
 - **Verifier:** independently runs configured tests/builds and records exact results before a task can be marked complete.
 
-See [System Architecture](docs/architecture/SYSTEM_ARCHITECTURE.md), [Security Model](docs/security/SECURITY_MODEL.md), and [Agent Engine Integration](docs/architecture/AGENT_ENGINE_INTEGRATION.md).
+See [System Architecture](docs/architecture/SYSTEM_ARCHITECTURE.md), [Security Model](docs/security/SECURITY_MODEL.md), [Agent Engine Integration](docs/architecture/AGENT_ENGINE_INTEGRATION.md), and the [Complete Fork Integration Matrix](docs/architecture/ALL_FORKS_INTEGRATION_MATRIX.md), which assigns a product role to every confirmed fork.
 
 ## Backend quickstart
 
