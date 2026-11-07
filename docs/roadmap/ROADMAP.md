@@ -21,10 +21,10 @@ Exit criteria: docs reviewed, security invariants accepted, implementation bound
 - [ ] Add frontend workspace/repository experience.
 
 ## Stage 2 — Platform-owned agent contracts
-- [ ] Add task, attempt, event, approval, and adapter capability schemas.
+- [x] Add initial task context, normalized event, and adapter capability schemas (in-memory contract; persistence/approval schemas remain pending).
 - [ ] Implement validated persisted task state machine.
-- [ ] Implement adapter protocol and deterministic fake adapter.
-- [ ] Normalize streaming events and correlation IDs.
+- [x] Implement adapter protocol and deterministic fake adapter.
+- [x] Define normalized event envelope and correlation IDs (durable event storage/stream transport remain pending).
 - [ ] Add task history, cancellation, retry, and timeout semantics.
 
 ## Stage 3 — Safe execution
