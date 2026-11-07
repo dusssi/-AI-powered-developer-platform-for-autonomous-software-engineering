@@ -17,19 +17,19 @@ Exit criteria: docs reviewed, security invariants accepted, implementation bound
 - [x] User registration/login baseline and owner-scoped workspace authorization.
 - [x] Repository URL registration (metadata only).
 - [ ] Add proper Git provider authorization and repository metadata fetch.
-- [ ] Implement task-scoped repository snapshot/indexing service.
+- [ ] Implement task-scoped repository snapshot/indexing service.\n- [x] Persist task, attempt, event, and approval-request records with migration 0003.\n- [x] Add owner-scoped task create/list/detail APIs; task creation creates attempt 1 in queued state.
 - [ ] Add frontend workspace/repository experience.
 
 ## Stage 2 — Platform-owned agent contracts
-- [x] Add initial task context, normalized event, and adapter capability schemas (in-memory contract; persistence/approval schemas remain pending).
-- [ ] Implement validated persisted task state machine.
+- [x] Add initial task context, normalized event, and adapter capability schemas.\n- [x] Add SQL persistence models for tasks, attempts, events, and approval records.
+- [ ] Implement validated persisted task state machine and guarded transitions.
 - [x] Implement adapter protocol and deterministic fake adapter.
-- [x] Define normalized event envelope and correlation IDs (durable event storage/stream transport remain pending).
+- [x] Define normalized event envelope, correlation IDs, and durable event table (event ingestion/stream transport remain pending).
 - [ ] Add task history, cancellation, retry, and timeout semantics.
 
 ## Stage 3 — Safe execution
 - [ ] Add policy engine with deny-overrides-allow semantics.
-- [ ] Add scoped, expiring approval records and replay protection.
+- [x] Add approval-request persistence fields (decision API, expiry enforcement, scope checks, and replay protection remain pending).
 - [ ] Implement disposable isolated workers with no ambient platform secrets.
 - [ ] Enforce filesystem confinement, resource quotas, and default-deny network egress.
 - [ ] Add security regression suite for tenancy, path traversal, approvals, and worker escape boundaries.
