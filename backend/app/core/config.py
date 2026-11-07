@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     database_url: str = "sqlite+aiosqlite:///./bucklabs_dev.db"
     jwt_secret: SecretStr = SecretStr("dev-only-change-this-secret-before-deploying")
     access_token_minutes: int = Field(default=30, ge=5, le=1440)
+    github_app_slug: str | None = None
+    github_webhook_secret: SecretStr | None = None
 
     @model_validator(mode="after")
     def validate_production_secrets(self):
