@@ -17,11 +17,14 @@ Exit criteria: docs reviewed, security invariants accepted, implementation bound
 - [x] User registration/login baseline and owner-scoped workspace authorization.
 - [x] Repository URL registration (metadata only).
 - [ ] Add proper Git provider authorization and repository metadata fetch.
-- [ ] Implement task-scoped repository snapshot/indexing service.\n- [x] Persist task, attempt, event, and approval-request records with migration 0003.\n- [x] Add owner-scoped task create/list/detail APIs; task creation creates attempt 1 in queued state.
+- [ ] Implement task-scoped repository snapshot/indexing service.
+- [x] Persist task, attempt, event, and approval-request records with migration 0003.
+- [x] Add owner-scoped task create/list/detail APIs; task creation creates attempt 1 in queued state.
 - [ ] Add frontend workspace/repository experience.
 
 ## Stage 2 — Platform-owned agent contracts
-- [x] Add initial task context, normalized event, and adapter capability schemas.\n- [x] Add SQL persistence models for tasks, attempts, events, and approval records.
+- [x] Add initial task context, normalized event, and adapter capability schemas.
+- [x] Add SQL persistence models for tasks, attempts, events, and approval records.
 - [ ] Implement validated persisted task state machine and guarded transitions.
 - [x] Implement adapter protocol and deterministic fake adapter.
 - [x] Define normalized event envelope, correlation IDs, and durable event table (event ingestion/stream transport remain pending).
