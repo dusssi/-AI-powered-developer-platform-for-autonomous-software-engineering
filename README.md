@@ -8,7 +8,7 @@ BuckLabs Dev is a human-governed engineering workspace: developers connect autho
 
 This repository is an early development foundation. It currently contains a FastAPI control-plane API with baseline authentication, owner-scoped workspaces, and GitHub repository URL registration (metadata only), plus architecture, security, migration, test, and CI foundations.
 
-**It is not yet a working autonomous coding platform.** Repository cloning/indexing, task orchestration, engine adapters, approvals, isolated workers, frontend, diff review, and GitHub PR delivery remain roadmap work.
+**It is not yet a working autonomous coding platform.** Repository cloning/indexing, persisted task orchestration, production engine adapters, approvals, isolated workers, frontend, diff review, and GitHub PR delivery remain roadmap work. The backend now contains initial platform-owned agent context/event/capability schemas, an adapter protocol, and a deterministic fake adapter for contract development; this is not yet a production execution engine.
 
 ## Architecture
 
